@@ -1,0 +1,46 @@
+import java.nio.file.Files
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath "org.elasticsearch.gradle:build-tools:${elasticsearchVersion}"
+    }
+}
+
+group 'com.w3dai.elasticsearch.plugin'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'elasticsearch.esplugin'
+
+// license of this project
+licenseFile = rootProject.file('LICENSE.txt')
+// copyright notices
+noticeFile = rootProject.file('NOTICE.txt')
+
+esplugin {
+    // license of the plugin, may be different than the above license
+    licenseFile rootProject.file('LICENSE.txt')
+    // copyright notices, may be different than the above notice
+    noticeFile rootProject.file('NOTICE.txt')
+    name 'term-list'
+    description 'List all the terms in the specified fields in the elasticsearch'
+    classname 'com.w3dai.elasticsearch.plugin.term.list.TermList'
+}
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'org.elasticsearch.client', name: 'elasticsearch-rest-high-level-client', version: '6.5.3'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
