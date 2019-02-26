@@ -19,11 +19,6 @@ apply plugin: 'java'
 apply plugin: 'idea'
 apply plugin: 'elasticsearch.esplugin'
 
-// license of this project
-licenseFile = rootProject.file('LICENSE.txt')
-// copyright notices
-noticeFile = rootProject.file('NOTICE.txt')
-
 esplugin {
     // license of the plugin, may be different than the above license
     licenseFile rootProject.file('LICENSE.txt')
@@ -31,7 +26,7 @@ esplugin {
     noticeFile rootProject.file('NOTICE.txt')
     name 'term-list'
     description 'List all the terms in the specified fields in the elasticsearch'
-    classname 'com.w3dai.elasticsearch.plugin.term.list.TermList'
+    classname 'com.w3dai.elasticsearch.plugin.TermList'
 }
 
 sourceCompatibility = 1.8
